@@ -1,0 +1,138 @@
+\RequirePackage{graphicx}
+\RequirePackage{ctex}
+\RequirePackage{xcolor}
+\RequirePackage{fancyhdr}
+%字体主题为雅黑
+\usefonttheme[onlymath]{serif}
+\let\yahei\relax
+\newCJKfontfamily\yahei{Microsoft YaHei}[AutoFakeBold]
+
+\setbeamerfont{normal text}{family={\rmfamily\yahei},size=\normalsize}
+\setbeamerfont{alerted text}{family={\rmfamily\yahei},size=\normalsize,series=\bfseries}
+\setbeamerfont{title}{family={\rmfamily\heiti},size=\huge}
+\setbeamerfont{subtitle}{size=\LARGE}
+\setbeamerfont{part title}{size=\LARGE}
+\setbeamerfont{section title}{size=\LARGE}
+\setbeamerfont{subsection title}{size=\LARGE}
+
+\setbeamerfont{author}{family={\rmfamily \kaishu},size=\Large}
+\setbeamerfont{institute}{family={\rmfamily\yahei},size=\normalsize}
+\setbeamerfont{date}{family={\rmfamily\kaishu},size=\normalsize}
+\setbeamerfont{part name}{family={\rmfamily\yahei},size=\LARGE,series=\bfseries}
+\setbeamerfont{section name}{family={\rmfamily\yahei},size=\LARGE,series=\bfseries}
+\setbeamerfont{subsection name}{family={\rmfamily\yahei},size=\LARGE,series=\bfseries}
+
+\setbeamerfont{section in toc}{family={\rmfamily\yahei},size=\large,series=\bfseries}
+\setbeamerfont{subsection in toc}{family={\rmfamily\yahei},size=\normalsize,series=\bfseries}
+\setbeamerfont{subsubsection in toc}{family={\rmfamily\yahei},size=\small,series=\bfseries}
+
+\setbeamerfont{section}{family={\rmfamily\yahei},size=\Large,series=\bfseries}
+\setbeamerfont{subsection}{family={\rmfamily\yahei},size=\large,series=\bfseries}
+
+\setbeamerfont{bibliography entry author}{family={\rmfamily\yahei},size=\normalsize}
+\setbeamerfont{bibliography entry title}{family={\rmfamily\yahei},size=\normalsize}
+\setbeamerfont{bibliography entry location}{family={\rmfamily\yahei},size=\normalsize}
+\setbeamerfont{bibliography entry note}{family={\rmfamily\yahei},size=\normalsize}
+
+\setbeamerfont{note page}{family={\rmfamily\yahei},size=\small}
+
+\setbeamerfont{section in head/foot}{family={\rmfamily\yahei},size=\footnotesize}
+
+\setbeamerfont{itemize/enumerate body}{family={\rmfamily\yahei},size=\normalsize}
+
+\setbeamerfont{block title}{family={\rmfamily\yahei},size=\Large,series=\bfseries}
+\setbeamerfont{block body}{family={\rmfamily\yahei},size=\normalsize}
+\setbeamerfont{block body alerted}{family={\rmfamily\songti},size=\normalsize,series=\bfseries}
+\setbeamerfont{block body example}{family={\rmfamily\songti},size=\normalsize,series=\bfseries}
+\setbeamerfont{example text}{family={\rmfamily\songti},size=\normalsize,series=\bfseries}
+
+%颜色主题为蓝色
+\definecolor{darkblue}{RGB}{0,63,132}
+\setbeamercolor{alerted text}{fg=red!50!black}
+\setbeamercolor{normal text}{fg=darkblue!50!black}
+
+\setbeamercolor{title}{fg=darkblue!50!black}
+
+\setbeamercolor{section in toc}{fg=darkblue}
+\setbeamercolor{subsection in toc}{fg=darkblue}
+
+\setbeamercolor{footline canvas}{bg=darkblue,fg=white}
+
+\setbeamercolor{headline canvas}{fg=white,bg=darkblue}
+
+\setbeamercolor{block body}{bg=darkblue!5!white}
+\setbeamercolor{block title}{fg=darkblue,bg=darkblue!20!white}
+\setbeamercolor{block alerted text}{fg=black!50!red}
+
+%内外主题定义
+\setbeamertemplate{footline}{%
+	\hbox{%	
+		\usebeamerfont{section in head/foot}%
+	\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.33\paperwidth]{footline canvas}
+		\qquad\insertshortauthor
+	\end{beamercolorbox}%
+		\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.33\paperwidth,center]{footline canvas}
+		\insertshorttitle
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.34\paperwidth]{footline canvas}
+	\hfill\insertframenumber/\inserttotalframenumber\hspace{2ex}
+\end{beamercolorbox}
+}}
+
+\setbeamertemplate{headline}{%
+\hbox{%
+	\usebeamerfont{section}%
+	\begin{beamercolorbox}[dp=0.7ex,ht=3.5ex,wd=1\paperwidth]{headline canvas}
+		\hspace{1ex}\insertsection%
+		\ifx\insertsubsection\@empty
+		\else
+		{\usebeamerfont{subsection}\,\rule[0.7ex]{0.8cm}{0.04cm}\,\usebeamercolor{section}\insertsubsection}
+		\fi%     
+		\hfill\includegraphics[width=2.5cm]{logo}
+	\end{beamercolorbox}
+}}
+
+\setbeamertemplate{title page}{
+	\vbox{\vspace{5ex}
+\begin{beamercolorbox}[dp=0.7ex,ht=2ex,wd=1\paperwidth,left]{titlepage}		\hspace{3ex}\includegraphics[width=25ex]{logoBLUE.pdf}
+
+		\hspace{4ex}\usebeamerfont{title}\inserttitle	
+	\end{beamercolorbox}
+	\ifx\insertsubtitle\@empty
+	\else	
+	\vspace{2.5ex}
+	\begin{beamercolorbox}[dp=0.7ex,ht=2ex,wd=1\paperwidth,left]{titlepage}
+		\hspace{4ex}\usebeamerfont{subtitle}\insertsubtitle
+	\end{beamercolorbox}
+	\fi
+	
+	\ifx\insertauthor\@empty
+	\else	
+	\vspace{5ex}
+	\begin{beamercolorbox}[dp=0.7ex,ht=2ex,wd=1\paperwidth,left]{titlepage}
+		\hspace{5ex}{\yahei\large 主讲人：}\usebeamerfont{author}\insertauthor
+	\end{beamercolorbox}
+	\fi
+}}
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\setbeamertemplate{itemize/enumerate body}{\usebeamerfont{itemize/enumerate body}}
+\setbeamertemplate{itemize items}{\color{darkblue!40!black}$\bullet$}
+\setbeamertemplate{enumearte items}{\color{blue!40!black}}
+
+\renewcommand{\ps@plain}{
+	\def \@oddhead {}
+	\def \@evenhead {}
+	\def \@oddfoot {\hbox{%	
+			\hspace{-5.85ex}\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.33\paperwidth]{footline canvas}
+				\vspace{0.5ex}\qquad\rmfamily\yahei\footnotesize\insertshortauthor
+			\end{beamercolorbox}%
+			\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.33\paperwidth,center]{footline canvas}
+				\vspace{0.5ex}\rmfamily\yahei\footnotesize\insertshorttitle
+			\end{beamercolorbox}%
+			\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.34\paperwidth]{footline canvas}
+				\vspace{0.5ex}\rmfamily\yahei\footnotesize\hfill\insertinstitute\hspace{2ex}
+		\end{beamercolorbox}}}
+	\def \evenfoot{}
+}
