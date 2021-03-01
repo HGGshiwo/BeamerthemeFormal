@@ -1,7 +1,8 @@
 \RequirePackage{graphicx}
 \RequirePackage{ctex}
 \RequirePackage{xcolor}
-\RequirePackage{fancyhdr}
+\RequirePackage{hyperref}
+\RequirePackage{marvosym}
 %字体主题为雅黑
 \usefonttheme[onlymath]{serif}
 \let\yahei\relax
@@ -64,6 +65,8 @@
 \setbeamercolor{block title}{fg=darkblue,bg=darkblue!20!white}
 \setbeamercolor{block alerted text}{fg=black!50!red}
 
+\setbeamercolor{toc line}{bg=white!50!darkblue}
+
 %内外主题定义
 \setbeamertemplate{footline}{%
 	\hbox{%	
@@ -121,18 +124,75 @@
 \setbeamertemplate{itemize items}{\color{darkblue!40!black}$\bullet$}
 \setbeamertemplate{enumearte items}{\color{blue!40!black}}
 
-\renewcommand{\ps@plain}{
+\newcommand{\@email}{}
+\newcommand{\email}[1]{\renewcommand{\@email}{\href{mailto: #1}{\Letter #1}}}
+\newcommand{\ps@titlepage}{
 	\def \@oddhead {}
 	\def \@evenhead {}
 	\def \@oddfoot {\hbox{%	
 			\hspace{-5.85ex}\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.33\paperwidth]{footline canvas}
-				\vspace{0.5ex}\qquad\rmfamily\yahei\footnotesize\insertshortauthor
+				\vspace{0.5ex}\qquad\rmfamily\yahei\footnotesize\@email
 			\end{beamercolorbox}%
 			\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.33\paperwidth,center]{footline canvas}
-				\vspace{0.5ex}\rmfamily\yahei\footnotesize\insertshorttitle
 			\end{beamercolorbox}%
 			\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.34\paperwidth]{footline canvas}
-				\vspace{0.5ex}\rmfamily\yahei\footnotesize\hfill\insertinstitute\hspace{2ex}
+				\vspace{0.5ex}\rmfamily\yahei\footnotesize\hfill\insertinstitute\hspace{6ex}
 		\end{beamercolorbox}}}
-	\def \evenfoot{}
+	\def \evenfoot{\hbox{%	
+			\hspace{-5.85ex}\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.33\paperwidth]{footline canvas}
+				\vspace{0.5ex}\qquad\rmfamily\yahei\footnotesize\@email
+			\end{beamercolorbox}%
+			\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.33\paperwidth,center]{footline canvas}
+			\end{beamercolorbox}%
+			\begin{beamercolorbox}[dp=1ex,ht=3ex,wd=0.34\paperwidth]{footline canvas}
+				\vspace{0.5ex}\rmfamily\yahei\footnotesize\hfill\insertinstitute\hspace{6ex}
+	\end{beamercolorbox}}}
 }
+
+\newcommand{\ps@tableofcontents}{
+	\def \@oddhead {\hbox{%
+		\begin{beamercolorbox}[dp=0.7ex,ht=5.5ex,wd=1\paperwidth,center]{headline canvas}
+		\includegraphics[width=2.5cm]{logo}
+		\end{beamercolorbox}}
+	\def \@evenhead {}
+}}
+\let\beamer@tableofcontents\relax
+\def\beamer@tableofcontents[#1]{{%
+		\def\beamer@toc@cs{hide}%
+		\def\beamer@toc@os{show}%
+		\def\beamer@toc@css{hide}%
+		\def\beamer@toc@oss{hide}%
+		\def\beamer@toc@ooss{hide}%
+		\def\beamer@toc@csss{hide}%
+		\def\beamer@toc@osss{hide}%
+		\def\beamer@toc@oosss{hide}%
+		\def\beamer@toc@ooosss{hide}%
+		\beamer@showpartnumber=\c@part%
+		\beamer@pausesectionsfalse%
+		\beamer@pausesubsectionsfalse%
+		\def\beamer@tocsections{<*>}%
+		\setkeys{beamertoc}{firstsection=1}%
+		\setkeys{beamertoc}{#1}%
+		\vspace*{-.5em}{\makeatletter%
+			\pause[0]%
+			\hfill
+			\begin{columns}
+				\begin{column}{.4\paperwidth}
+					\centering
+					\usebeamerfont{section name}\color{darkblue}\insertsection
+				\end{column} 
+			\begin{column}{0.4ex}
+				\begin{beamercolorbox}[dp=.3\paperheight,ht=.2\paperheight,wd=0.2ex]{toc line}
+				\end{beamercolorbox}
+			\end{column}
+			\qquad
+				\begin{column}{.4\paperwidth}
+					
+					\begin{beamercolorbox}[dp=,ht=,wd=.4\paperwidth]{}
+						\@input{\jobname.toc}%
+					\end{beamercolorbox}
+					
+				\end{column}
+			\end{columns}\hfill
+			}%
+}}
