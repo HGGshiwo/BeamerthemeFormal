@@ -8,6 +8,9 @@
 \let\yahei\relax
 \newCJKfontfamily\yahei{Microsoft YaHei}[AutoFakeBold]
 
+%fix issue #1
+\AtBeginDocument{\rmfamily\yahei}
+
 \setbeamerfont{normal text}{family={\rmfamily\yahei},size=\normalsize}
 \setbeamerfont{alerted text}{family={\rmfamily\yahei},size=\normalsize,series=\bfseries}
 \setbeamerfont{title}{family={\rmfamily\heiti},size=\huge}
